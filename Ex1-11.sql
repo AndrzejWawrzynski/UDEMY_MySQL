@@ -21,7 +21,7 @@ CREATE DATABASE fastest_animals;
 
 CREATE TABLE slowest_animals
 (
-	animal VARCHAR(50),
+    animal VARCHAR(50),
     spieces VARCHAR(50),
     speed DECIMAL(8,6)
 );
