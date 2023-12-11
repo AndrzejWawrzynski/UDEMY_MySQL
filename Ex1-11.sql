@@ -82,3 +82,28 @@ Display the first 50 movies, with their titles and rating.
 
 SELECT title, rating FROM film LIMIT 50;
 
+#Ex9 Display the titles of the last 20 movies (there are 1000 movies in the database).
+
+SELECT title FROM film LIMIT 980,20;
+
+/*
+Ex10
+Check what happens if we select a movie with a "general" rating, 
+but instead of a capital letter, we write the condition with a lowercase letter "G".
+*/
+
+/* 
+ANSWER Ex10
+We will get the same result because the letters "g" and "G" are the same (in terms of content, not size). 
+MySQL compares the value of our query.
+*/
+
+/* 
+Ex11
+Find the first 20 movies for children above 13 years old (PG-13), 
+and provide their titles, duration, and rental cost.
+*/
+
+SELECT title, length, rental_rate FROM film WHERE rating = 'PG-13' LIMIT 20;
+
+
