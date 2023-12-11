@@ -11,3 +11,18 @@ SHOW TABLES;
 #Ex3 Display the structure of the table containing units of measurement.
 
 DESC st_units_of_measure;
+
+#Ex4 Create a new "fastest_animals" database.
+
+CREATE DATABASE fastest_animals;
+
+#Ex5 Create a table called "slowest_animals" with three columns : 'animal', 'species' and 'speed',
+# where the first two columns will have a character data type and the 'speed' will be a decimal number with 6 decimal places.
+
+CREATE TABLE slowest_animals
+(
+	animal VARCHAR(50),
+    spieces VARCHAR(50),
+    speed DECIMAL(8,6)
+);
+
