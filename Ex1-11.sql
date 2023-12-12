@@ -80,11 +80,15 @@ Ex8
 Display the first 50 movies, with their titles and rating.
 */
 
-SELECT title, rating FROM film LIMIT 50;
+SELECT title, rating 
+FROM film 
+LIMIT 50;
 
 #Ex9 Display the titles of the last 20 movies (there are 1000 movies in the database).
 
-SELECT title FROM film LIMIT 980,20;
+SELECT title 
+FROM film 
+LIMIT 980,20;
 
 /*
 Ex10
@@ -104,6 +108,9 @@ Find the first 20 movies for children above 13 years old (PG-13),
 and provide their titles, duration, and rental cost.
 */
 
-SELECT title, length, rental_rate FROM film WHERE rating = 'PG-13' LIMIT 20;
+SELECT title, length, rental_rate 
+FROM film 
+WHERE rating = 'PG-13' 
+LIMIT 20;
 
 
