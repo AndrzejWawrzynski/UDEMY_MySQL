@@ -7,7 +7,7 @@ stanowią oceny pięciogwiazdkowe?
 SELECT 
 	SUM(star_5)/SUM(ratings_no)*100 AS procent 
 FROM ksiazki 
-WHERE ranking > 4;
+WHERE rating > 4;
 
 /*
 Ex33
@@ -16,7 +16,7 @@ Jaka jest średnia ocena dla autorów których nazwiska są krótsze niż 6 albo
 
 SELECT 
 	autor, 
-    ROUND(AVG(ranking),2) AS srednia 
+    ROUND(AVG(rating),2) AS srednia 
 FROM ksiazki 
 WHERE CHAR_LENGTH(SUBSTRING_INDEX(autor, ' ', -1)) NOT BETWEEN 6 AND 10 
 GROUP BY autor 

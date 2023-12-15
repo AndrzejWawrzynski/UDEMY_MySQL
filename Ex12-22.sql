@@ -162,7 +162,8 @@ SELECT
 	tytul AS tytuł, 
     SUBSTRING_INDEX(autor, ' ', -1) AS nazwisko 
 FROM ksiazki 
-ORDER BY ranking DESC LIMIT 15;
+ORDER BY rating DESC 
+LIMIT 15;
 
 /*
 Ex20
