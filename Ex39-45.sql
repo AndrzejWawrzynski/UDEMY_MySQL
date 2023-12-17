@@ -1,6 +1,6 @@
 /*
 Ex39
-Przy pomocy jednego zapytania wypisz numery zamowień i ilość książek
+Przy pomocy jednego zapytania wypisz numery zamówień i ilość książek
 jakie zostały w ramach każdego zamówienia kupione.
 */
 
@@ -13,7 +13,7 @@ GROUP BY zamowienia_id;
 
 /*
 Ex41
-Wylistuj numery zamowien i zamowine ksiazki
+Wylistuj numery zamówień i zamówione książki.
 */
 
  SELECT 
