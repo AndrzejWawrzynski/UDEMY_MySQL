@@ -23,7 +23,7 @@ SELECT
 FROM uzytkownicy
 	JOIN zamowienia ON uzytkownicy.id = zamowienia.uzytkownicy_id
     	JOIN koszyk ON zamowienia.id = koszyk.zamowienia_id
-   	 JOIN ksiazki ON koszyk.ksiazki_id = ksiazki.id;
+   	JOIN ksiazki ON koszyk.ksiazki_id = ksiazki.id;
     
 /*
 Ex41
