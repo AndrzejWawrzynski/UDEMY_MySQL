@@ -21,7 +21,7 @@ uwzględnij tylko książki publikowane w latach nieparzystych.
 */
 
 SELECT 
-	autor, 
+    autor, 
     AVG(rating) AS srednia_ocena 
 FROM ksiazki 
 WHERE SUBSTRING_INDEX(autor, ' ', 1) IN ('John', 'Dan', 'George', 'William') 
@@ -68,12 +68,12 @@ SELECT
     END AS gwiazdki,
     rok_wydania,
     CASE
-		WHEN rok_wydania <= 1492 THEN '#sredniowiecze'
+	WHEN rok_wydania <= 1492 THEN '#sredniowiecze'
         WHEN rok_wydania BETWEEN 1492 AND 1520 THEN '#renesans'
-		WHEN rok_wydania BETWEEN 1521 AND 1680 THEN '#barok'
+	WHEN rok_wydania BETWEEN 1521 AND 1680 THEN '#barok'
         WHEN rok_wydania BETWEEN 1681 AND 1789 THEN '#oswiecenie'
-		WHEN rok_wydania BETWEEN 1790 AND 1850 THEN '#romantyzm'
-		WHEN rok_wydania BETWEEN 1851 AND 1880 THEN '#pozytywizm'
+	WHEN rok_wydania BETWEEN 1790 AND 1850 THEN '#romantyzm'
+	WHEN rok_wydania BETWEEN 1851 AND 1880 THEN '#pozytywizm'
         WHEN rok_wydania BETWEEN 1881 AND 1918 THEN '#modernizm'
         WHEN rok_wydania BETWEEN 1919 AND 1939 THEN '#literaturamiedzywojenna'
         ELSE 'literaturawspolczesna'
