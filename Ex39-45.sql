@@ -1,4 +1,44 @@
 /*
+BEFORE NEXT EXERCISES
+Przeanalizuj strukturę plików zamowienia.csv i koszyk.csv. Przygotuj schematy tabel o nazwie zamowienia i koszyk, 
+następnie wczytaj do niech wszystkie dane. Tabela zamowienia powinna posiadac klucz obcy do tabeli uzytkownicy,
+a tabela koszyk dwa klucze obce, jeden do tabeli zamowienia a drugi do tabeli ksiazki.
+*/
+
+CREATE TABLE zamowienia
+(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    uzytkownicy_id INT,
+	data_zamowienia TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (uzytkownicy_id) REFERENCES uzytkownicy(id)
+);
+
+CREATE TABLE koszyk
+(
+	zamowienia_id INT,
+    ksiazki_id INT,
+    FOREIGN KEY (zamowienia_id) REFERENCES zamowienia(id),
+    FOREIGN KEY (ksiazki_id) REFERENCES ksiazki(id)
+);
+
+LOAD DATA INFILE '/usr/local/mysql/zamowienia.csv' -- tu podaj sciezke dostepu do pliku na swoim komputerze
+INTO TABLE zamowienia
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES
+(id, uzytkownicy_id); 
+
+LOAD DATA INFILE '/usr/local/mysql/koszyk.csv' -- tu podaj sciezke dostepu do pliku na swoim komputerze
+INTO TABLE koszyk
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES
+(zamowienia_id, ksiazki_id);
+
+
+/*
 Ex39
 Przy pomocy jednego zapytania wypisz numery zamówień i ilość książek
 jakie zostały w ramach każdego zamówienia kupione.
