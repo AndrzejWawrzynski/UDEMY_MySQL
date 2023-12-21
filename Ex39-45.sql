@@ -1,7 +1,7 @@
 /*
 BEFORE NEXT EXERCISES
 Przeanalizuj strukturę plików zamowienia.csv i koszyk.csv. Przygotuj schematy tabel o nazwie zamowienia i koszyk, 
-następnie wczytaj do niech wszystkie dane. Tabela zamowienia powinna posiadac klucz obcy do tabeli uzytkownicy,
+następnie wczytaj do nich wszystkie dane. Tabela zamowienia powinna posiadac klucz obcy do tabeli uzytkownicy,
 a tabela koszyk dwa klucze obce, jeden do tabeli zamowienia a drugi do tabeli ksiazki.
 */
 
