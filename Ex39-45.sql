@@ -95,8 +95,48 @@ WHERE uzytkownicy.adres_miasto LIKE 'Warszawa';
 
 /*
 Ex45
+Wyświetl liste adresów email i ID użytkowników sklepu oraz przysługujacy im kupon zniżkowy 
+wedlug nastepujacych zasad:
+1. jeżeli użytkownik kupił kiedykolwiek ksiażke o Harrym Potterze, treść emaila powinna brzmieć:
+„Wróć do Hogwartu! Kontynuuj przygody razem z Harrym i przyjaciółmi, wykorzystaj swój kupon rabatowy na książki i Harrym już dziś!",
+a przysługujący kupon to: BACKTOHARRY 10%
 
+2. jeżeli użytkownik kupił kiedykolwiek u nas książkę, ale nigdy o Harrym Potterze, to treść wiadomości
+powinna brzmieć:
+„Dołącz do uczniów Hogwartu i odkryj fascynujący świat czarów i magii. Poznaj Harrego i jego przyjaciół, 
+kupuj książki z serii taniej z kodem rabatowym!",
+a przysługujący kupon to: DISCOUERHARRY 20%
 
+3. jeżeli użytkownik nigdy nie złożył u nas jeszcze zamówienia, to powinien otrzymać email 
+o następującej treści:
+„Witaj mugolu! Nie miałeś jeszcze okazji poznać naszego magicznego świata? Poznaj magię już dziś z kodem rabatowym 
+na twoje pierwsze zamówienie. Dodaj do koszyka książki z serii o Harrym Potterze i korzystaj z magicznych rabatów!",
+oraz kod FIRSTTIME 25%
+*/
 
+SELECT
+	DISTINCT uzytkownicy.id,
+	uzytkownicy.email AS 'email uzytkownika',
+	CASE
+		WHEN ksiazki.tytul LIKE '%Harry Potter%' THEN 'Wróc do Hogwartu!
+			Kontynuuj przygody razem z Harrym i przyjaciółmi, wykorzystaj swöj kupon
+			rabatowy na ksiazki i Harrym juz dzis!'
+		WHEN zamowienia.uzytkownicy_id > 0 THEN 'Dolacz do uczniów Hogwartu 
+			i odkryj fascynujacy swiat czarów i magii. Poznaj Harrego i jego
+			przyjacioł, kupuj książki z serii taniej z kodem rabatowym!'
+		ELSE 'Witaj mugolu! Nie miałes jeszcze okazji poznać naszego magicznego
+			swiata? Poznaj magie już dziż z kodem rabatowym na twoje pierwsze
+			zamówienie. Dodaj do koszyka książki z serii o Harrym Potterze 
+			i korzystaj z magicznych rabatów!'
+	END AS 'treść email',
+	CASE
+		WHEN ksiazki.tytul LIKE '%Harry Potter%' THEN 'BACKTOHARRY 10%'
+		WHEN zamowienia.uzytkownicy_id > 0 THEN 'DISCOVERHARRY 20%'
+		ELSE 'FIRSTTIME 25%'
+	END AS kupon
+FROM uzytkownicy
+LEFT JOIN zamowienia ON uzytkownicy.id = zamowienia.uzytkownicy_id
+LEFT JOIN koszyk ON koszyk.zamowienia_id = zamowienia.id
+LEFT JOIN ksiazki ON ksiazki.id = koszyk.ksiazki_id;
 
 
